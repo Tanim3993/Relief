@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Events - ReliefNet (Demo)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">Relief<span>Net</span></div>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li class="active"><a href="events.html">Disaster Events</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="donations.html">Donations</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <header>
+                <h1>Disaster Events</h1>
+                <p>Manage and track ongoing disaster relief efforts.</p>
+                <a href="add_event.html" style="text-decoration: none;">
+                    <button class="btn-primary">+ Report New Event</button>
+                </a>
+            </header>
+
+            <section class="table-container">
+                <h3>All Disaster Events</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                            <th>Severity</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1</td>
+                            <td>Flood</td>
+                            <td>Sylhet, Bangladesh</td>
+                            <td><span class="badge critical">Critical</span></td>
+                            <td>Active</td>
+                            <td>2024-05-15</td>
+                        </tr>
+                        <tr>
+                            <td>#2</td>
+                            <td>Cyclone</td>
+                            <td>Chattogram, Bangladesh</td>
+                            <td><span class="badge high">High</span></td>
+                            <td>Active</td>
+                            <td>2024-06-10</td>
+                        </tr>
+                        <tr>
+                            <td>#3</td>
+                            <td>Earthquake</td>
+                            <td>Dhaka, Bangladesh</td>
+                            <td><span class="badge medium">Medium</span></td>
+                            <td>Resolved</td>
+                            <td>2024-01-20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -4,84 +4,83 @@ ReliefNet is a web-based disaster management system designed to track disaster e
 
 ## Project Structure
 
-The project is structured as follows:
-
-- **`index.php`**: The main dashboard. Shows summary statistics and a list of active disaster events.
-- **`login.php` & `logout.php`**: User authentication pages.
-- **`process_login.php`**: Server-side logic for user login.
-- **`signup.php`**: User registration page.
-- **`process_signup.php`**: Server-side logic for user registration.
-- **`add_event.php`**: Form for reporting new disaster events.
-- **`process_event.php`**: Server-side logic for saving disaster events.
-- **`db.php`**: Database connection configuration. Now uses **SQLite** via PDO with a MySQLi compatibility layer.
-- **`database.sqlite`**: The SQLite database file containing all project data.
-- **`schema_sqlite.sql`**: The SQL schema used to create the database.
-- **`style.css`**: Modern CSS styles for the entire application.
-
-## Database Connection (SQLite)
-
-The project now uses SQLite. No external database server (like MySQL or MariaDB) is required.
-
-- The connection is handled in `db.php` using **PDO**.
-- A compatibility layer is included in `db.php` so that existing `mysqli` code continues to work without modification.
-- Database file: `database.sqlite` (automatically loaded).
-
-## How to Run
-
-### Prerequisite
-You must have **PHP** installed on your system with the **sqlite3** extension enabled.
+- **`index.php`**: The main dashboard showing summary statistics.
+- **`login.php` / `signup.php`**: User authentication forms.
+- **`events.php` / `resources.php` / `donations.php`**: Data management pages.
+- **`db.php`**: Database connection (SQLite PDO with MySQLi compatibility layer).
+- **`database.sqlite`**: The local database file (contains all data).
+- **`style.css`**: UI styling for the entire application.
 
 ---
 
-### On Arch Linux
+## Detailed Setup for Windows
 
-1. **Install PHP and SQLite**:
-   ```bash
-   sudo pacman -S php php-sqlite
-   ```
+### Option 1: Using XAMPP (easiest for beginners)
 
-2. **Configure PHP**:
-   Ensure `extension=pdo_sqlite` and `extension=sqlite3` are uncommented in your `/etc/php/php.ini`.
-
-3. **Start the PHP Server**:
-   Navigate to the project directory and run:
-   ```bash
-   php -S localhost:8000
-   ```
-
-4. **Access the App**:
-   Open your browser and go to `http://localhost:8000/login.php`.
+1. **Install XAMPP**: Download and install from [apachefriends.org](https://www.apachefriends.org/).
+2. **Move Project**: Copy your project folder into `C:\xampp\htdocs\relief`.
+3. **Enable SQLite Extension**:
+   - Open the **XAMPP Control Panel**.
+   - Next to **Apache**, click the **Config** button and select `PHP (php.ini)`.
+   - Press `Ctrl+F` and search for `pdo_sqlite`.
+   - Remove the semicolon `;` from the beginning of these lines:
+     ```ini
+     extension=pdo_sqlite
+     extension=sqlite3
+     ```
+   - Save the file and close it.
+4. **Start Apache**: Click the **Start** button for Apache in the XAMPP Control Panel.
+5. **Access the App**: Open your browser and go to: `http://localhost/relief/login.php`
 
 ---
 
-### On Windows
+### Option 2: Using PHP directly (Advanced/Lightweight)
 
-#### Option 1: Using PHP directly (Recommended)
-1. **Download PHP**: Get the "Thread Safe" version from [windows.php.net](https://windows.php.net/download/).
-2. **Enable Extensions**: In your `php.ini`, uncomment `extension=pdo_sqlite` and `extension=sqlite3`.
-3. **Run the Server**:
-   Open Command Prompt (cmd) in the project folder and run:
-   ```cmd
-   php -S localhost:8000
-   ```
-4. **Access the App**: Go to `http://localhost:8000/login.php`.
+1. **Download PHP**:
+   - Go to [windows.php.net/download](https://windows.php.net/download/).
+   - Download the **"VS16 x64 Thread Safe"** Zip file.
+   - Extract the Zip to `C:\php`.
+2. **Add PHP to Windows Path**:
+   - Search for "Edit the system environment variables" in your Start Menu.
+   - Click **Environment Variables**.
+   - Under "System variables", find **Path**, select it, and click **Edit**.
+   - Click **New** and add `C:\php`.
+   - Click OK on all windows.
+3. **Configure `php.ini`**:
+   - Go to `C:\php` and rename `php.ini-development` to `php.ini`.
+   - Open `php.ini` in Notepad.
+   - Search for `extension_dir = "ext"` and remove the `;` at the start.
+   - Search for `extension=pdo_sqlite` and remove the `;`.
+   - Search for `extension=sqlite3` and remove the `;`.
+   - Save and exit.
+4. **Run the Server**:
+   - Open **Command Prompt** (cmd) inside your project folder.
+   - Run: `php -S localhost:8000`
+5. **Access the App**: Go to `http://localhost:8000/login.php`
 
-#### Option 2: Using XAMPP
-1. Move the `relief` folder into `C:\xampp\htdocs\`.
-2. Start the **Apache** module from the XAMPP Control Panel.
-3. Access the app at `http://localhost/relief/login.php`.
+---
+
+## Troubleshooting Windows Issues
+
+- **"php is not recognized"**: You need to add `C:\php` (or your XAMPP php path) to your System Environment Variables (Step 2 in Option 2).
+- **"Could not find driver"**: This means the `pdo_sqlite` extension is not enabled. Double-check your `php.ini` and make sure you removed the semicolon `;` and restarted your server.
+- **"Permission Denied" (SQLite)**: Right-click the `database.sqlite` file, go to Properties > Security, and ensure the "Users" group has "Full Control" or "Modify" permissions.
 
 ---
 
 ## Initial Setup & Seeding
 
 1. **Populate the Database**:
-   After starting the server, you can fill the database with sample data (including users **tanim** and **soumik**) by visiting:
-   `http://localhost:8000/seed.php`
-
-2. **Default Login Credentials**:
-   - **User**: `tanim@reliefnet.com`
+   Visit `http://localhost:8000/seed.php` (or `http://localhost/relief/seed.php` if using XAMPP) to fill the database with sample data.
+2. **Default Credentials**:
+   - **Email**: `tanim@reliefnet.com`
    - **Password**: `password123`
 
-3. **Manual Registration**:
-   You can also create a new account via the **Register** button on the login page.
+---
+
+## Deployment (GitHub Pages)
+
+This project includes a **Static Demo** version at `index.html`. 
+1. Push all files to GitHub.
+2. Go to **Settings > Pages** and enable deployment from the `main` branch.
+3. Your live UI will be available at `https://<user>.github.io/<repo>/index.html`.

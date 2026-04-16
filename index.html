@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relief Management Dashboard (Demo)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">Relief<span>Net</span></div>
+            <ul>
+                <li class="active"><a href="index.html">Dashboard</a></li>
+                <li><a href="events.html">Disaster Events</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="donations.html">Donations</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <header>
+                <h1>Dashboard Overview</h1>
+                <p>Welcome back, tanim</p>
+                <a href="add_event.html" style="text-decoration: none;">
+                    <button class="btn-primary">+ Report New Event</button>
+                </a>
+            </header>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <h3>Active Disasters</h3>
+                    <p class="value">2</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Donations</h3>
+                    <p class="value">$1,700.50</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Available Resources</h3>
+                    <p class="value">17,150 Units</p>
+                </div>
+            </section>
+
+            <section class="table-container">
+                <h3>Current Disaster Events</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Location</th>
+                            <th>Severity</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1</td>
+                            <td>Flood</td>
+                            <td>Sylhet, Bangladesh</td>
+                            <td><span class="badge critical">Critical</span></td>
+                            <td>Active</td>
+                            <td>2024-05-15</td>
+                        </tr>
+                        <tr>
+                            <td>#2</td>
+                            <td>Cyclone</td>
+                            <td>Chattogram, Bangladesh</td>
+                            <td><span class="badge high">High</span></td>
+                            <td>Active</td>
+                            <td>2024-06-10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
